@@ -1,10 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
-      <h1>APP</h1>
-    </div>
+    <BrowserRouter>
+      <div>
+        <h1>APP</h1>
+      </div>
+    </BrowserRouter>
   );
 };
 
