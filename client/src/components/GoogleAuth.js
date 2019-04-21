@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class GoogleAuth extends Component {
-  // initialise state
+  // initialize state
   state = {
     isSignedIn: null
   };
@@ -15,19 +15,36 @@ class GoogleAuth extends Component {
           scope: 'email'
         })
         .then(() => {
-          this.auth = window.gapi.auth2.getAuthInstance();
-          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.auth = window.gapi.auth2.getAuthInstance(); // assign auth to the getAuthInstance object
+          this.setState({ isSignedIn: this.auth.isSignedIn.get() }); // update the state with setState
+          this.auth.isSignedIn.listen(this.onAuthChange); // use the listen method to automatically update
         });
     });
   }
 
+  // method called for changing updating the signedIn/signedOut status
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
+
+  // display the signedIn/signedOut status
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>I don't know if we are signed in</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>I am signed in!</div>;
+      return (
+        <button className="ui red google button">
+          <i className="google icon" />
+          Sign Out
+        </button>
+      );
     } else {
-      return <div>I am not signed in</div>;
+      return (
+        <button className="ui green google button">
+          <i className="google icon" />
+          Sign In
+        </button>
+      );
     }
   }
 
