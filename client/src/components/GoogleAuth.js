@@ -27,8 +27,12 @@ class GoogleAuth extends Component {
   }
 
   // method called for changing updating the signedIn/signedOut status
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  onAuthChange = isSignedIn => {
+    if (isSignedIn) {
+      this.props.signIn();
+    } else {
+      this.props.signOut();
+    }
   };
 
   // helper method to sign in
