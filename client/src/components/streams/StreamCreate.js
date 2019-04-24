@@ -40,6 +40,22 @@ class StreamCreate extends Component {
   }
 }
 
+const validate = formValues => {
+  const errors = {};
+  
+  if (!formValues.title) {
+    // only run if the user did not enter a title
+    errors.title = 'You must enter a title';
+  }
+
+  if (!formValues.description) {
+    // only run if the user did not enter a description
+    errors.description = 'You must enter a description';
+  }
+
+  return errors;
+};
+
 export default reduxForm({
   form: 'StreamCreate'
 })(StreamCreate);
