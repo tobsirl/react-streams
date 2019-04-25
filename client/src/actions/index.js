@@ -5,8 +5,8 @@ import {
   CREATE_STREAM,
   FETCH_STREAMS,
   FETCH_STREAM,
-  DELETE_STREAM,
-  EDIT_STREAM
+  EDIT_STREAM,
+  DELETE_STREAM
 } from './types';
 
 export const signIn = userId => {
@@ -39,4 +39,31 @@ export const fetchStreams = () => async dispatch => {
 
   // update the store with the list of streams
   dispatch({ type: FETCH_STREAMS, payload: response.data });
+};
+
+// Fetch a single stream
+export const fetchStream = id => async dispatch => {
+  // make a get request with the id
+  const response = await streams.get(`/streams/${id}`);
+
+  // update the store
+  dispatch({ type: FETCH_STREAM, payload: response.data });
+};
+
+// Update an existing stream
+export const editStream = (id, formValues) => async dispatch => {
+  // make an update to an existing stream
+  const response = await streams.put(`/streams/${id}`, formValues);
+
+  // update the store
+  dispatch({ type: EDIT_STREAM, payload: response.data });
+};
+
+// delete an existing stream
+export const deleteStream = id => async dispatch => {
+  // remove a stream
+  await streams.delete(`/streams/${id}`);
+
+  //update the store
+  dispatch({ type: DELETE_STREAM, payload: id });
 };
