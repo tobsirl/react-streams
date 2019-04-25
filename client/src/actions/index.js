@@ -15,8 +15,11 @@ export const signOut = () => {
 };
 
 //Using react-thunk
+// Create a stream 
 export const createStream = formValues => async dispatch => {
+  // send data to the backend server
   const response = await streams.post('/streams', formValues);
 
+  // update the store
   dispatch({ type: CREATE_STREAM, payload: response.data });
 };
