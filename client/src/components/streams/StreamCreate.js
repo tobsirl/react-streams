@@ -27,9 +27,9 @@ class StreamCreate extends Component {
   };
 
   // handle submissions
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = formValues => {
+    this.props.createStream(formValues);
+  };
 
   render() {
     return (
