@@ -8,15 +8,15 @@ import {
 
 export default (state = {}, action) => {
   switch (action.type) {
+    case FETCH_STREAM:
+      return { ...state, [action.payload.id]: action.payload };
     case CREATE_STREAM:
-      return;
+      return { ...state, [action.payload.id]: action.payload };
+    case EDIT_STREAM:
+      return { ...state, [action.payload.id]: action.payload };
     case FETCH_STREAMS:
       return;
-    case FETCH_STREAM:
-      return;
     case DELETE_STREAM:
-      return;
-    case EDIT_STREAM:
       return;
     default:
       return state;
