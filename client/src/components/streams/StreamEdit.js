@@ -4,10 +4,24 @@ import { connect } from 'react-redux';
 import { fetchStream } from '../../actions';
 
 class StreamEdit extends Component {
-  
+  componentDidMount() {
+    this.props.fetchStream(this.props.match.params.id);
+  }
+
+  renderStream() {
+    return (
+      <div>
+        <li>{this.props.stream.title}</li>
+      </div>
+    );
+  }
 
   render() {
-    return <div>StreamEdit</div>;
+    console.log(this.props.stream);
+    if (!this.props.stream) {
+      return <div>Loading...</div>;
+    }
+    return <div>{this.renderStream()}</div>;
   }
 }
 
