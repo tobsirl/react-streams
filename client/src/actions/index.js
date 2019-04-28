@@ -1,4 +1,5 @@
 import streams from '../apis/steams';
+import history from '../history';
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -32,6 +33,7 @@ export const createStream = formValues => async (dispatch, getState) => {
 
   // update the store
   dispatch({ type: CREATE_STREAM, payload: response.data });
+  history.push('/');
 };
 
 // Fetch all the steams
