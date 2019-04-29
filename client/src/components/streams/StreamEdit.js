@@ -7,11 +7,12 @@ import StreamForm from './StreamForm';
 class StreamEdit extends Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
+    console.log(this.props.stream)
   }
 
   onSubmit = formValues => {
     console.log(formValues);
-    this.props.editStream(formValues);
+    //dthis.props.editStream(formValues);
   };
 
   render() {
@@ -21,7 +22,10 @@ class StreamEdit extends Component {
     return (
       <div>
         <h3>Edit a Stream</h3>
-        <StreamForm onSubmit={this.onSubmit} />
+        <StreamForm
+          initialValues={this.props.stream}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
