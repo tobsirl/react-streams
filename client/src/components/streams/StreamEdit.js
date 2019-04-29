@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 
 import { fetchStream, editStream } from '../../actions';
 import StreamForm from './StreamForm';
-
 class StreamEdit extends Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
-    console.log(this.props.stream)
   }
 
   onSubmit = formValues => {
-    console.log(formValues);
-    //dthis.props.editStream(formValues);
+    console.log(formValues)
+    this.props.editStream(this.props.match.params.id, formValues);
   };
 
   render() {
@@ -23,7 +21,10 @@ class StreamEdit extends Component {
       <div>
         <h3>Edit a Stream</h3>
         <StreamForm
-          initialValues={this.props.stream}
+          initialValues={{
+            title: this.props.stream.title,
+            description: this.props.stream.description
+          }}
           onSubmit={this.onSubmit}
         />
       </div>
