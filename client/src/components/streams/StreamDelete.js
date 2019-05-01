@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Modal from '../Modal';
 import history from '../../history';
 
-import { fetchStream } from '../../actions';
+import { fetchStream, deleteStream } from '../../actions';
 
 class StreamDelete extends Component {
   componentDidMount() {
     this.props.fetchStream(this.props.match.params.id);
   }
 
+  onHandleDelete = id => {
+    console.log(`onHandleDelete ${id}`);
+    this.props.deleteStream(id);
+  };
+
   renderActions() {
     return (
       <div>
-        <button className="ui button negative">Delete</button>
-        <button className="ui button">Cancel</button>
+        <button
+          onClick={() => this.onHandleDelete(this.props.match.params.id)}
+          className="ui button negative"
+        >
+          Delete
+        </button>
+        <Link to="/" className="ui button">
+          Cancel
+        </Link>
       </div>
     );
   }
@@ -47,5 +60,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchStream }
+  { fetchStream, deleteStream }
 )(StreamDelete);
