@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchStream } from '../../actions';
 
 const StreamShow = () => {
-  return (
-    <div>
-      StreamShow
-    </div>
-  )
-}
+  return <div>StreamShow</div>;
+};
 
-export default StreamShow
+const mapStateToProps = (state, ownProps) => {
+  return { stream: state.stream };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchStream }
+)(StreamShow);

@@ -1,3 +1,25 @@
 {
-  "streams": []
+  "streams": [
+    {
+      "title": "Test",
+      "description": "Test the test",
+      "id": 1
+    },
+    {
+      "title": "Another Stream",
+      "description": "Hearthstone",
+      "id": 2
+    },
+    {
+      "title": "Programtic Navigation EDIT to see how",
+      "description": "You should not see this on the form page! EDIT to see how ",
+      "userId": "100329431854712238464",
+      "id": 4
+    },
+    {
+      "title": "This is a test after the refactor Edit",
+      "description": "Test test test EDIT",
+      "id": 5
+    }
+  ]
 }
