@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchStream } from '../../actions';
 
-const StreamShow = () => {
-  return <div>StreamShow</div>;
-};
+class StreamShow extends Component {
+  render() {
+    return <div>StreamShow</div>;
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return { stream: state.stream };
